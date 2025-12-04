@@ -44,11 +44,13 @@ from .configuration_llamantk import LlamaNTKConfig
 
 try:
     from flash_attn.flash_attn_interface import flash_attn_varlen_qkvpacked_func
-except:
-    from flash_attn.flash_attn_interface import (
-        flash_attn_unpadded_qkvpacked_func as flash_attn_varlen_qkvpacked_func,
-    )
-from flash_attn.bert_padding import unpad_input, pad_input
+    from flash_attn.flash_attn_interface import flash_attn_varlen_func
+    from flash_attn.bert_padding import unpad_input, pad_input
+except ImportError:
+    flash_attn_varlen_qkvpacked_func = None
+    flash_attn_varlen_func = None
+    unpad_input = None
+    pad_input = None
 
 from einops import rearrange
 
