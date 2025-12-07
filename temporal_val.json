@@ -1,0 +1,1010 @@
+[
+  {
+    "id": "temporal_0002",
+    "image": "/workspace/data/temporal_concat/2.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0539",
+    "image": "/workspace/data/temporal_concat/539.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0034",
+    "image": "/workspace/data/temporal_concat/34.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0348",
+    "image": "/workspace/data/temporal_concat/348.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0416",
+    "image": "/workspace/data/temporal_concat/416.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0573",
+    "image": "/workspace/data/temporal_concat/573.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0263",
+    "image": "/workspace/data/temporal_concat/263.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0366",
+    "image": "/workspace/data/temporal_concat/366.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0643",
+    "image": "/workspace/data/temporal_concat/643.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0651",
+    "image": "/workspace/data/temporal_concat/651.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0609",
+    "image": "/workspace/data/temporal_concat/609.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0022",
+    "image": "/workspace/data/temporal_concat/22.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0538",
+    "image": "/workspace/data/temporal_concat/538.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0516",
+    "image": "/workspace/data/temporal_concat/516.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0297",
+    "image": "/workspace/data/temporal_concat/297.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0642",
+    "image": "/workspace/data/temporal_concat/642.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0051",
+    "image": "/workspace/data/temporal_concat/51.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0545",
+    "image": "/workspace/data/temporal_concat/545.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0435",
+    "image": "/workspace/data/temporal_concat/435.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0705",
+    "image": "/workspace/data/temporal_concat/705.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0555",
+    "image": "/workspace/data/temporal_concat/555.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0532",
+    "image": "/workspace/data/temporal_concat/532.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0624",
+    "image": "/workspace/data/temporal_concat/624.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0093",
+    "image": "/workspace/data/temporal_concat/93.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0089",
+    "image": "/workspace/data/temporal_concat/89.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0403",
+    "image": "/workspace/data/temporal_concat/403.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0691",
+    "image": "/workspace/data/temporal_concat/691.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0295",
+    "image": "/workspace/data/temporal_concat/295.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0254",
+    "image": "/workspace/data/temporal_concat/254.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0635",
+    "image": "/workspace/data/temporal_concat/635.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0367",
+    "image": "/workspace/data/temporal_concat/367.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0684",
+    "image": "/workspace/data/temporal_concat/684.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0204",
+    "image": "/workspace/data/temporal_concat/204.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0308",
+    "image": "/workspace/data/temporal_concat/308.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0258",
+    "image": "/workspace/data/temporal_concat/258.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0506",
+    "image": "/workspace/data/temporal_concat/506.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0488",
+    "image": "/workspace/data/temporal_concat/488.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0469",
+    "image": "/workspace/data/temporal_concat/469.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0144",
+    "image": "/workspace/data/temporal_concat/144.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0463",
+    "image": "/workspace/data/temporal_concat/463.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0719",
+    "image": "/workspace/data/temporal_concat/719.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0393",
+    "image": "/workspace/data/temporal_concat/393.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0466",
+    "image": "/workspace/data/temporal_concat/466.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0283",
+    "image": "/workspace/data/temporal_concat/283.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0261",
+    "image": "/workspace/data/temporal_concat/261.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0386",
+    "image": "/workspace/data/temporal_concat/386.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0645",
+    "image": "/workspace/data/temporal_concat/645.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0402",
+    "image": "/workspace/data/temporal_concat/402.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0081",
+    "image": "/workspace/data/temporal_concat/81.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0655",
+    "image": "/workspace/data/temporal_concat/655.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0068",
+    "image": "/workspace/data/temporal_concat/68.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0616",
+    "image": "/workspace/data/temporal_concat/616.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0320",
+    "image": "/workspace/data/temporal_concat/320.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0542",
+    "image": "/workspace/data/temporal_concat/542.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0318",
+    "image": "/workspace/data/temporal_concat/318.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0657",
+    "image": "/workspace/data/temporal_concat/657.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0033",
+    "image": "/workspace/data/temporal_concat/33.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0685",
+    "image": "/workspace/data/temporal_concat/685.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0387",
+    "image": "/workspace/data/temporal_concat/387.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0252",
+    "image": "/workspace/data/temporal_concat/252.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0112",
+    "image": "/workspace/data/temporal_concat/112.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0238",
+    "image": "/workspace/data/temporal_concat/238.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0612",
+    "image": "/workspace/data/temporal_concat/612.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0476",
+    "image": "/workspace/data/temporal_concat/476.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0191",
+    "image": "/workspace/data/temporal_concat/191.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0102",
+    "image": "/workspace/data/temporal_concat/102.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0184",
+    "image": "/workspace/data/temporal_concat/184.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0584",
+    "image": "/workspace/data/temporal_concat/584.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0392",
+    "image": "/workspace/data/temporal_concat/392.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0363",
+    "image": "/workspace/data/temporal_concat/363.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "first"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0209",
+    "image": "/workspace/data/temporal_concat/209.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  },
+  {
+    "id": "temporal_0631",
+    "image": "/workspace/data/temporal_concat/631.jpg",
+    "conversations": [
+      {
+        "from": "human",
+        "value": "TASK: Determine temporal order of LEFT and RIGHT images. \n    STEP 1: Describe key differences between the images (look for: burnt/cut objects, people positions, sun/shadow positions, object states, etc.)\n    STEP 2: Analyze which state came first chronologically.\n    STEP 3: State your final answer. FORMAT: Write \"ANSWER: first\" if LEFT happened earlier, or \"ANSWER: second\" if RIGHT happened earlier. Then explain your reasoning in 1-2 sentences."
+      },
+      {
+        "from": "gpt",
+        "value": "second"
+      }
+    ]
+  }
+]

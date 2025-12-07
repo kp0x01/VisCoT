@@ -193,17 +193,22 @@ def get_mm_adapter_state_maybe_zero_3(named_params, keys_to_match):
 
 
 def find_all_linear_names(model):
-    cls = torch.nn.Linear
+    """Find all linear layer names for LoRA, including quantized layers"""
+    import bitsandbytes as bnb
     lora_module_names = set()
+    
     for name, module in model.named_modules():
-        if isinstance(module, cls):
-            names = name.split(".")
-            lora_module_names.add(names[0] if len(names) == 1 else names[-1])
-
-    if "lm_head" in lora_module_names:  # needed for 16-bit
+        # Check if module is a linear layer (regular or quantized)
+        if isinstance(module, (torch.nn.Linear, bnb.nn.Linear4bit, bnb.nn.Linear8bitLt)):
+            # Get the last part of the module name
+            module_name = name.split(".")[-1]
+            lora_module_names.add(module_name)
+    
+    # Remove lm_head as it should not have LoRA
+    if "lm_head" in lora_module_names:
         lora_module_names.remove("lm_head")
+    
     return list(lora_module_names)
-
 
 def safe_save_model_for_hf_trainer(trainer: transformers.Trainer, output_dir: str):
     """Collects the state dict and dump to disk."""
@@ -1192,10 +1197,20 @@ def train():
     if training_args.lora_enable:
         from peft import LoraConfig, get_peft_model
 
+        # Determine target modules based on quantization
+        if training_args.bits in [4, 8]:
+            # For quantized models, explicitly specify target modules
+            target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+            rank0_print(f"Using explicit target modules for {training_args.bits}-bit: {target_modules}")
+        else:
+            # For full precision, use automatic detection
+            target_modules = find_all_linear_names(model)
+            rank0_print(f"Auto-detected target modules: {target_modules}")
+        
         lora_config = LoraConfig(
             r=training_args.lora_r,
             lora_alpha=training_args.lora_alpha,
-            target_modules=find_all_linear_names(model),
+            target_modules=target_modules,
             lora_dropout=training_args.lora_dropout,
             bias=training_args.lora_bias,
             task_type="CAUSAL_LM",
@@ -1206,6 +1221,11 @@ def train():
             if training_args.fp16:
                 model.to(torch.float16)
         rank0_print("Adding LoRA adapters...")
+        
+        # Enable gradient checkpointing for LoRA layers if using quantization
+        if training_args.bits in [4, 8]:
+            model.enable_input_require_grads()
+        
         model = get_peft_model(model, lora_config)
 
     if "mpt" in model_args.model_name_or_path:
@@ -1245,10 +1265,14 @@ def train():
         )
 
         vision_tower = model.get_vision_tower()
-        vision_tower.to(
-            dtype=torch.bfloat16 if training_args.bf16 else torch.float16,
-            device=training_args.device,
-        )
+        # Keep vision tower in fp32 when fp16=False to avoid OOM
+        if training_args.fp16:
+            vision_tower.to(dtype=torch.float16, device=training_args.device)
+        elif training_args.bf16:
+            vision_tower.to(dtype=torch.bfloat16, device=training_args.device)
+        else:
+            # Force fp32 for vision tower when neither fp16 nor bf16
+            vision_tower.to(dtype=torch.float32, device=training_args.device)
         if hasattr(vision_tower, "image_processor"):
             data_args.image_processor = vision_tower.image_processor
         else:
