@@ -127,9 +127,15 @@ class TrainingArguments(transformers.TrainingArguments):
     vision_tower_layerwise_decay: bool = field(default=False)
 
 
+# Around line 130-145, find the maybe_zero_3 function and replace it:
+
 def maybe_zero_3(param, ignore_status=False, name=None):
-    from deepspeed import zero
-    from deepspeed.runtime.zero.partition_parameters import ZeroParamStatus
+    try:
+        from deepspeed import zero
+        from deepspeed.runtime.zero.partition_parameters import ZeroParamStatus
+    except ImportError:
+        # DeepSpeed not installed, just return the parameter
+        return param.detach().cpu().clone()
 
     if hasattr(param, "ds_id"):
         if param.ds_status == ZeroParamStatus.NOT_AVAILABLE:
@@ -1197,29 +1203,48 @@ def train():
     if training_args.lora_enable:
         from peft import LoraConfig, get_peft_model
 
-        # Determine target modules based on quantization
+    # Determine target modules based on quantization
         if training_args.bits in [4, 8]:
             # For quantized models, explicitly specify target modules
+            # ONLY target LLM layers, exclude vision tower
             target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+            
+            # CRITICAL: Do NOT use modules_to_save with quantization
+            # Instead, we'll unfreeze mm_projector manually after creating PEFT model
+            modules_to_save = None
+            
             rank0_print(f"Using explicit target modules for {training_args.bits}-bit: {target_modules}")
+            rank0_print(f"Note: mm_projector will be unfrozen manually (quantization compatibility)")
         else:
             # For full precision, use automatic detection
             target_modules = find_all_linear_names(model)
+            # CRITICAL: Exclude vision tower from LoRA
+            target_modules = [m for m in target_modules if "vision" not in m.lower()]
+            
+            if not training_args.freeze_mm_mlp_adapter:
+                modules_to_save = ["mm_projector"]
+            else:
+                modules_to_save = None
+            
             rank0_print(f"Auto-detected target modules: {target_modules}")
+            rank0_print(f"Modules to save (trainable): {modules_to_save}")
         
         lora_config = LoraConfig(
             r=training_args.lora_r,
             lora_alpha=training_args.lora_alpha,
             target_modules=target_modules,
+            modules_to_save=modules_to_save,
             lora_dropout=training_args.lora_dropout,
             bias=training_args.lora_bias,
             task_type="CAUSAL_LM",
         )
+        
         if training_args.bits == 16:
             if training_args.bf16:
                 model.to(torch.bfloat16)
             if training_args.fp16:
                 model.to(torch.float16)
+        
         rank0_print("Adding LoRA adapters...")
         
         # Enable gradient checkpointing for LoRA layers if using quantization
@@ -1227,6 +1252,7 @@ def train():
             model.enable_input_require_grads()
         
         model = get_peft_model(model, lora_config)
+        
 
     if "mpt" in model_args.model_name_or_path:
         raise NotImplementedError
