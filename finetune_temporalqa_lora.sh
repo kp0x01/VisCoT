@@ -1,27 +1,15 @@
 #!/bin/bash
-# finetune_temporalqa_lora.sh
-
-set -e
-
-OUTPUT_DIR="./temporalqa_lora_final"
-rm -rf ${OUTPUT_DIR}
-mkdir -p ${OUTPUT_DIR}
-
-echo "=========================================="
-echo "Temporal QA - LoRA Fine-tuning"
-echo "=========================================="
-echo "Output directory: ${OUTPUT_DIR}"
-echo "Starting training..."
-echo ""
+# finetune_temporalqa_FULL_LORA.sh (16-bit, NOT QLoRA)
 
 CUDA_VISIBLE_DEVICES=0 python -u -m llava.train.train_mem \
     --lora_enable True \
     --lora_r 128 \
     --lora_alpha 256 \
     --lora_dropout 0.1 \
-    --bits 4 \
-    --quant_type nf4 \
-    --double_quant True \
+    --bits 16 \                        # ← Changed from 4
+    --fp16 True \                      # ← Added FP16
+    # REMOVED: --quant_type nf4
+    # REMOVED: --double_quant True
     --model_name_or_path checkpoints/VisCoT-7b-336 \
     --model_arc llama \
     --version vicuna_v1 \
@@ -35,16 +23,15 @@ CUDA_VISIBLE_DEVICES=0 python -u -m llava.train.train_mem \
     --mm_use_im_start_end False \
     --mm_use_im_patch_token False \
     --image_aspect_ratio pad \
-    --fp16 False \
-    --output_dir ${OUTPUT_DIR} \
+    --output_dir ./temporalqa_lora_fp16 \
     --num_train_epochs 20 \
     --per_device_train_batch_size 1 \
     --gradient_accumulation_steps 16 \
     --save_strategy "steps" \
     --save_steps 30 \
     --save_total_limit 3 \
-    --learning_rate 5e-5 \
-    --weight_decay 0.05 \
+    --learning_rate 2e-5 \              # ← Lower LR for FP16
+    --weight_decay 0.01 \
     --warmup_ratio 0.1 \
     --lr_scheduler_type "cosine" \
     --logging_steps 5 \
@@ -52,15 +39,4 @@ CUDA_VISIBLE_DEVICES=0 python -u -m llava.train.train_mem \
     --gradient_checkpointing True \
     --dataloader_num_workers 0 \
     --lazy_preprocess True \
-    --report_to none \
-    2>&1 | tee ${OUTPUT_DIR}/training.log
-
-echo ""
-echo "=========================================="
-echo "Training complete!"
-echo "=========================================="
-echo "Checkpoints saved in: ${OUTPUT_DIR}"
-echo "Training log: ${OUTPUT_DIR}/training.log"
-echo ""
-echo "To evaluate, run:"
-echo "  python evaluate_temporalqa.py --checkpoint ${OUTPUT_DIR}/checkpoint-XXX"
+    --report_to none
