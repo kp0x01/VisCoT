@@ -18,8 +18,13 @@ from pathlib import Path
 from tqdm import tqdm
 from datetime import datetime
 
+try:
+    from peft import PeftModel
+except ImportError:
+    PeftModel = None
+
 class FewShotTemporalInference:
-    def __init__(self, model_path, example_dir=None):
+    def __init__(self, model_path, example_dir=None, lora_path=None, merge_lora=False):
         """Initialize model and load example images"""
         print(f"Loading model from {model_path}...")
         
@@ -34,6 +39,15 @@ class FewShotTemporalInference:
         )
         
         self.model = self.model.to(dtype=torch.float16)
+
+        if lora_path:
+            if PeftModel is None:
+                raise ImportError("peft is not installed but --lora-path was provided")
+            print(f"Loading LoRA adapter from {lora_path} (merge={merge_lora})")
+            self.model = PeftModel.from_pretrained(self.model, lora_path)
+            if merge_lora:
+                self.model = self.model.merge_and_unload()
+            self.model = self.model.to(dtype=torch.float16)
         print(f"Model loaded! Vocab size: {len(self.tokenizer)}")
         
         # Load example images if provided
@@ -203,8 +217,8 @@ Now answer this query image (marked with "?") using the same reasoning:
             import traceback
             return None, f"{str(e)}\n{traceback.format_exc()}"
 
-def process_dataset(model_path, data_dir, output_file, query, example_dir=None, 
-                   use_few_shot=False, num_shots=2):
+def process_dataset(model_path, data_dir, output_file, query, example_dir=None,
+                   use_few_shot=False, num_shots=2, lora_path=None, merge_lora=False):
     """Process dataset with few-shot learning"""
     
     data_path = Path(data_dir)
@@ -219,7 +233,7 @@ def process_dataset(model_path, data_dir, output_file, query, example_dir=None,
         return
     
     # Initialize model with examples
-    inferencer = FewShotTemporalInference(model_path, example_dir)
+    inferencer = FewShotTemporalInference(model_path, example_dir, lora_path, merge_lora)
     
     results = []
     
@@ -271,6 +285,10 @@ def main():
                        help='Use few-shot with example images')
     parser.add_argument('--num-shots', type=int, default=2,
                        help='Number of example images to include')
+    parser.add_argument('--lora-path', type=str, default=None,
+                       help='Optional path to a LoRA adapter fine-tuned on top of --model-path')
+    parser.add_argument('--merge-lora', action='store_true',
+                       help='Merge LoRA adapter into the base model for inference')
     
     args = parser.parse_args()
     
@@ -279,7 +297,8 @@ def main():
         return
     
     process_dataset(args.model_path, args.data_dir, args.output, args.query,
-                   args.example_dir, args.few_shot, args.num_shots)
+                   args.example_dir, args.few_shot, args.num_shots,
+                   lora_path=args.lora_path, merge_lora=args.merge_lora)
 
 if __name__ == "__main__":
     main()

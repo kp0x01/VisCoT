@@ -28,3 +28,6 @@ ckpts*
 
 # Demo
 serve_images/
+
+# dataset
+temporal/

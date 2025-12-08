@@ -136,5 +136,9 @@ class LlavaLlamaForCausalLM(LlamaForCausalLM, LlavaMetaForCausalLM):
         )
         return model_inputs
 
-AutoConfig.register("llava", LlavaConfig)
+try:
+    AutoConfig.register("llava", LlavaConfig)
+except ValueError:
+    # Allow re-registration when multiple imports happen in the same process.
+    AutoConfig.register("llava", LlavaConfig, exist_ok=True)
 AutoModelForCausalLM.register(LlavaConfig, LlavaLlamaForCausalLM)

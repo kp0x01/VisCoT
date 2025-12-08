@@ -9,9 +9,12 @@ from transformers.trainer import (
     get_parameter_names,
     has_length,
     ALL_LAYERNORM_LAYERS,
-    ShardedDDPOption,
     logger,
 )
+try:
+    from transformers.trainer import ShardedDDPOption
+except ImportError:
+    from transformers.trainer_utils import ShardedDDPOption
 from typing import List, Optional
 
 

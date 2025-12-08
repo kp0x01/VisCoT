@@ -25,11 +25,17 @@ from transformers import (
 )
 import torch
 from llava.model import *
+from llava.model.language_model.llava_llama import LlavaConfig
 from llava.constants import (
     DEFAULT_IMAGE_PATCH_TOKEN,
     DEFAULT_IM_START_TOKEN,
     DEFAULT_IM_END_TOKEN,
 )
+
+try:
+    AutoConfig.register("llava", LlavaConfig)
+except ValueError:
+    AutoConfig.register("llava", LlavaConfig, exist_ok=True)
 
 
 def load_pretrained_model(

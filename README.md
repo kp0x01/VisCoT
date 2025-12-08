@@ -182,6 +182,45 @@ Some options to note:
 - `--ft_vision_tower True`: finetune the vision encoder with the same learning rate as the backbone.
 - `--vision_tower_lr 2e-6`: use a specific vision encder learning rate.
 
+### Temporal Ordering Prefix Tuning (Custom Dataset)
+
+If you want to adapt VisCoT to the `temporal/` dataset (or similar binary ordering tasks), follow this lightweight recipe:
+
+1. **Normalize labels** – ensure every assistant reply is exactly `"first"` or `"second"` and optionally append a one-word format reminder to the question prompts:
+
+   ```bash
+   python tools/normalize_temporal_dataset.py temporal --format-hint
+   ```
+
+2. **Provision a GPU environment** – launch a G/VT EC2 instance (e.g., `g5.2xlarge` with one A10G GPU) or another CUDA host, install the repo as described in [Install](#install), and download `checkpoints/llava_7b_mm_projector.bin`.
+
+3. **Run prefix tuning** – use the helper script that mirrors the notebook configuration and freezes Vicuna while updating the multimodal projector only:
+
+   ```bash
+   bash scripts/train_temporal_lora.sh ./temporal ./checkpoints/viscot-temporal-prefix
+   ```
+
+   Override `MODEL_BASE`, `VISION_TOWER`, `PROJECTOR`, `BATCH_SIZE`, `GRAD_ACCUM`, or `LEARNING_RATE` via environment variables to fit your GPU budget.
+
+   To train with LoRA adapters instead of (or in addition to) the projector, set `ENABLE_LORA=1` when invoking the script. You can customize the adapter rank/alpha/dropout via `LORA_R`, `LORA_ALPHA`, `LORA_DROPOUT`, and `LORA_BIAS`:
+
+   ```bash
+   ENABLE_LORA=1 LORA_R=32 LORA_ALPHA=64 bash scripts/train_temporal_lora.sh ./temporal ./checkpoints/viscot-temporal-prefix-lora
+   ```
+
+4. **Evaluate** – reuse `temporal_ordering_batch.py` / `temporal_ordering_fewshot.py` with a strict query that ends with `FORMAT: Reply with exactly one word: "first" or "second"`. The scripts already clamp outputs by searching for the keywords, so reasoning text will not break accuracy.
+
+   If you trained a LoRA adapter, point the inference script at the base checkpoint via `--model-path` and supply the adapter directory with `--lora-path` (add `--merge-lora` to fold the adapter into the base weights on-the-fly):
+
+   ```bash
+   python temporal_ordering_batch.py \
+     --model-path checkpoints/VisCoT-7b-336 \
+     --lora-path checkpoints/viscot-temporal-prefix-lora \
+     --merge-lora \
+     --data-dir temporal/workspace/data \
+     --output temporal_eval_lora.json
+   ```
+
 ## Evaluation
 
 ### Visual CoT Benchmark
