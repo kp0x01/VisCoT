@@ -1,9 +1,9 @@
 #!/bin/bash
-# finetune_lora_4bit_FIXED.sh
+# finetune_recipeqa_qlora.sh
 set -e
 
-OUTPUT_DIR="./temporal_lora_fixed"
-
+OUTPUT_DIR="./recipeqa_lora_output"
+rm -rf ${OUTPUT_DIR}
 mkdir -p ${OUTPUT_DIR}
 
 CUDA_VISIBLE_DEVICES=0 python -u -m llava.train.train_mem \
@@ -17,7 +17,7 @@ CUDA_VISIBLE_DEVICES=0 python -u -m llava.train.train_mem \
     --model_name_or_path checkpoints/VisCoT-7b-336 \
     --model_arc llama \
     --version vicuna_v1 \
-    --data_path temporal_train.json \
+    --data_path recipeqa_train_balanced.json \
     --image_folder ./ \
     --vision_tower openai/clip-vit-large-patch14-336 \
     --tune_mm_mlp_adapter False \
@@ -29,8 +29,8 @@ CUDA_VISIBLE_DEVICES=0 python -u -m llava.train.train_mem \
     --image_aspect_ratio pad \
     --fp16 False \
     --output_dir ${OUTPUT_DIR} \
-    --num_train_epochs 50 \
-    --per_device_train_batch_size 16 \
+    --num_train_epochs 30 \
+    --per_device_train_batch_size 32 \
     --gradient_accumulation_steps 16 \
     --save_strategy "epoch" \
     --save_total_limit 2 \
