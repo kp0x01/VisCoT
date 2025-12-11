@@ -3,7 +3,8 @@ __pycache__
 *.pyc
 *.egg-info
 dist
-
+temporal/
+temporal.zip
 # Log
 *.log
 *.log.*
