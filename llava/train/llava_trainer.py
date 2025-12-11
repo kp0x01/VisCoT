@@ -14,7 +14,16 @@ from transformers.trainer import (
 try:
     from transformers.trainer import ShardedDDPOption
 except ImportError:
-    from transformers.trainer_utils import ShardedDDPOption
+    try:
+        from transformers.trainer_utils import ShardedDDPOption
+    except ImportError:
+        class ShardedDDPOption:
+            NONE = "none"
+            SIMPLE = "simple"
+            ZERO_DP_2 = "zero_dp_2"
+            ZERO_DP_3 = "zero_dp_3"
+if not hasattr(ShardedDDPOption, "SIMPLE"):
+    ShardedDDPOption.SIMPLE = "simple"
 from typing import List, Optional
 
 
@@ -161,9 +170,11 @@ class LLaVATrainer(Trainer):
         We provide a reasonable default that works well. If you want to use something else, you can pass a tuple in the
         Trainer's init through `optimizers`, or subclass and override this method in a subclass.
         """
+        if not hasattr(self, "sharded_ddp"):
+            self.sharded_ddp = ShardedDDPOption.NONE
         if is_sagemaker_mp_enabled():
             return super().create_optimizer()
-        if self.sharded_ddp == ShardedDDPOption.SIMPLE:
+        if getattr(self, "sharded_ddp", ShardedDDPOption.NONE) == getattr(ShardedDDPOption, "SIMPLE", "simple"):
             return super().create_optimizer()
 
         opt_model = self.model

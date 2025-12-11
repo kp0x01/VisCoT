@@ -54,7 +54,8 @@ class TemporalOrderingInference:
             image_tensor = image_tensor.to(self.model.device, dtype=torch.float16)
 
             conv = conv_templates["vicuna_v1"].copy()
-            inp = DEFAULT_IMAGE_TOKEN + '\n' + query
+            prompt_query = query if DEFAULT_IMAGE_TOKEN in query else DEFAULT_IMAGE_TOKEN + "\n" + query
+            inp = prompt_query
             conv.append_message(conv.roles[0], inp)
             conv.append_message(conv.roles[1], None)
             prompt = conv.get_prompt()
@@ -115,17 +116,19 @@ def process_dataset(model_path, data_dir, output_file, query, image_extensions=N
     inferencer = TemporalOrderingInference(model_path, lora_path=lora_path, merge_lora=merge_lora)
 
     results = []
+    base_query = query
+    if DEFAULT_IMAGE_TOKEN not in base_query:
+        base_query = DEFAULT_IMAGE_TOKEN + "\n" + base_query
 
     for image_path in tqdm(image_files, desc="Processing images"):
-        response, error = inferencer.infer(str(image_path), query)
+        response, error = inferencer.infer(str(image_path), base_query)
 
         if error is None and response is not None:
             response_lower = response.strip().lower()
+            if "assistant:" in response_lower:
+                response_lower = response_lower.split("assistant:", 1)[1].strip()
             first_word = response_lower.split()[0] if response_lower else ""
-            if first_word in {"first", "second"}:
-                ans = first_word
-            else:
-                ans = "NA"
+            ans = first_word if first_word in {"first", "second"} else "NA"
         else:
             ans = "NA"
 
@@ -176,7 +179,7 @@ def main():
                        default='temporal_ordering_results.json',
                        help='Output JSON file for results')
     parser.add_argument('--query', type=str,
-    default='TASK: Determine temporal order of LEFT and RIGHT images. FORMAT: Reply with exactly one word: "first" or "second".',
+    default='<image>\nTASK: Determine temporal order of LEFT and RIGHT images. FORMAT: Reply with exactly one word: "first" or "second". Do not add reasoning.',
     help='Question to ask about temporal ordering')
     parser.add_argument('--lora-path', type=str, default=None,
                        help='Optional path to a LoRA adapter fine-tuned on top of --model-path')
