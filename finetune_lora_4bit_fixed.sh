@@ -1,10 +1,8 @@
-#!/bin/bash
-# finetune_lora_4bit_FIXED.sh
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
 
 OUTPUT_DIR="./temporal_lora_fixed"
-
-mkdir -p ${OUTPUT_DIR}
+mkdir -p "${OUTPUT_DIR}"
 
 CUDA_VISIBLE_DEVICES=0 python -u -m llava.train.train_mem \
     --lora_enable True \
@@ -28,7 +26,7 @@ CUDA_VISIBLE_DEVICES=0 python -u -m llava.train.train_mem \
     --mm_use_im_patch_token False \
     --image_aspect_ratio pad \
     --fp16 False \
-    --output_dir ${OUTPUT_DIR} \
+    --output_dir "${OUTPUT_DIR}" \
     --num_train_epochs 50 \
     --per_device_train_batch_size 16 \
     --gradient_accumulation_steps 16 \
@@ -44,6 +42,6 @@ CUDA_VISIBLE_DEVICES=0 python -u -m llava.train.train_mem \
     --dataloader_num_workers 4 \
     --lazy_preprocess True \
     --report_to none \
-    2>&1 | tee ${OUTPUT_DIR}/training.log
+    2>&1 | tee "${OUTPUT_DIR}/training.log"
 
 echo "Training complete!"
