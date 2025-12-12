@@ -39,7 +39,7 @@ model = LlavaLlamaForCausalLM.from_pretrained(
     torch_dtype=torch.float16
 )
 
-# Update checkpoint path as needed
+# update as needed here
 CHECKPOINT_PATH = "/ocean/projects/cis250266p/kanand/VisCoT/temporal_lora_fixed/checkpoint-29"
 model = PeftModel.from_pretrained(model, CHECKPOINT_PATH, is_trainable=False)
 
@@ -98,7 +98,7 @@ for sample in tqdm(test_data):
     elif 'second' in pred_raw:
         pred = 'second'
     else:
-        pred = 'first'  # Default to 'first' if unclear
+        pred = 'first'  # default - first
     
     ground_truths.append(gt)
     predictions.append(pred)
@@ -120,12 +120,10 @@ for sample in tqdm(test_data):
 
 # Calculate metrics
 accuracy = accuracy_score(ground_truths, predictions)
-
 # For binary classification, we'll treat 'first' as positive class (1) and 'second' as negative class (0)
 # Convert to binary labels
 y_true = [1 if gt == 'first' else 0 for gt in ground_truths]
 y_pred = [1 if pred == 'first' else 0 for pred in predictions]
-
 # Calculate metrics for both classes
 precision_macro = precision_score(y_true, y_pred, average='macro')
 recall_macro = recall_score(y_true, y_pred, average='macro')

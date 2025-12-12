@@ -81,23 +81,10 @@ class TemporalOrderingInference:
                 for token_id in ids.tolist():
                     if 0 <= token_id < vocab_size:
                         valid_ids.append(token_id)
-                    # else:
-                    #     # Skip invalid tokens
-                    #     print(f"Warning: Skipping invalid token ID {token_id} (vocab size: {vocab_size})")
                 filtered_ids.append(torch.tensor(valid_ids, device=self.model.device))
             
-            # Decode with filtered IDs
             outputs = self.tokenizer.batch_decode(filtered_ids, skip_special_tokens=True)[0].strip()
-            
-            # Extract just "first" or "second" from the response
             response_lower = outputs.lower()
-            # if "first" in response_lower:
-            #     result = "first"
-            # elif "second" in response_lower:
-            #     result = "second"
-            # else:
-            # result = outputs.split('ASSISTANT:')[1]  # Return full response if neither keyword found
-            
             return outputs, None
             
         except Exception as e:
@@ -156,11 +143,9 @@ def process_dataset(model_path, data_dir, output_file, query, image_extensions=N
             with open(output_file, 'w') as f:
                 json.dump(results, f, indent=2)
             print(f"\nSaved checkpoint at {len(results)} images")
-    
     # Save final results
     with open(output_file, 'w') as f:
         json.dump(results, f, indent=2)
-    
     # Print statistics
     successful = sum(1 for r in results if r['error'] is None)
     failed = len(results) - successful

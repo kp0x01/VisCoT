@@ -130,10 +130,6 @@ def collate_fn(batch: List[Dict]) -> Dict[str, torch.Tensor]:
     
     return collated
 
-# ============================================================================
-# Model Loading
-# ============================================================================
-
 def load_model_with_lora():
     """Load base model and add LoRA adapters"""
     
@@ -192,11 +188,6 @@ def load_model_with_lora():
           f"({100 * trainable_params / total_params:.2f}%)\n")
     
     return model
-
-# ============================================================================
-# Training
-# ============================================================================
-
 def train():
     # Load processor
     print("Loading processor...")

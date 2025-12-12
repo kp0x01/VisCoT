@@ -208,7 +208,7 @@ def print_metrics(metrics):
     print(f"Macro-averaged F1:                   {metrics['macro_f1']:.4f}")
     print()
 
-    print("=== Per-label metrics ===")
+    print("Per-label metrics")
     labels = sorted(set(metrics["precision"].keys()) | set(metrics["recall"].keys()))
     print(f"{'Label':<15} {'Accuracy':<10} {'Precision':<10} {'Recall':<10} {'F1':<10}")
     print("-" * 55)
@@ -220,7 +220,7 @@ def print_metrics(metrics):
         print(f"{label:<15} {acc:<10.4f} {prec:<10.4f} {rec:<10.4f} {f1:<10.4f}")
     print()
 
-    print("=== Confusion matrix (rows = true, cols = pred) ===")
+    print("Confusion matrix (rows = true, cols = pred)")
     labels = sorted(set(metrics["confusion"].keys()) | 
                    set(label for counts in metrics["confusion"].values() for label in counts.keys()))
     header = ["true \\ pred"] + list(labels)

@@ -6,10 +6,8 @@ CUDA_VISIBLE_DEVICES=0 python -u -m llava.train.train_mem \
     --lora_r 128 \
     --lora_alpha 256 \
     --lora_dropout 0.1 \
-    --bits 16 \                        # ← Changed from 4
-    --fp16 True \                      # ← Added FP16
-    # REMOVED: --quant_type nf4
-    # REMOVED: --double_quant True
+    --bits 16 \                  
+    --fp16 True \                    
     --model_name_or_path checkpoints/VisCoT-7b-336 \
     --model_arc llama \
     --version vicuna_v1 \
@@ -30,7 +28,7 @@ CUDA_VISIBLE_DEVICES=0 python -u -m llava.train.train_mem \
     --save_strategy "steps" \
     --save_steps 30 \
     --save_total_limit 3 \
-    --learning_rate 2e-5 \              # ← Lower LR for FP16
+    --learning_rate 2e-5 \           
     --weight_decay 0.01 \
     --warmup_ratio 0.1 \
     --lr_scheduler_type "cosine" \
