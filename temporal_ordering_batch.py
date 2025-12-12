@@ -1,199 +1,198 @@
 #!/usr/bin/env python
-import os
+from __future__ import annotations
+
+import argparse
+import json
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from typing import List, Optional, Sequence
+
 import torch
+from PIL import Image
+from tqdm import tqdm
+
 torch.backends.cuda.enable_flash_sdp(False)
 torch.backends.cuda.enable_mem_efficient_sdp(False)
 
+from llava.constants import DEFAULT_IMAGE_TOKEN, IMAGE_TOKEN_INDEX
+from llava.conversation import conv_templates
 from llava.model.builder import load_pretrained_model
 from llava.mm_utils import process_images, tokenizer_image_token
-from llava.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN
-from llava.conversation import conv_templates
-from PIL import Image
-import argparse
-import json
-from pathlib import Path
-from tqdm import tqdm
-from datetime import datetime
 
 try:
     from peft import PeftModel
 except ImportError:
     PeftModel = None
 
+
+@dataclass
+class SampleResult:
+    image_path: Path
+    prediction: str
+    raw_output: Optional[str]
+    error: Optional[str]
+
+
 class TemporalOrderingInference:
-    def __init__(self, model_path, lora_path=None, merge_lora=False):
-        print(f"Loading model from {model_path}...")
-
-        model_name = "llava-v1.5-7b"
-
-        self.tokenizer, self.model, self.image_processor, self.context_len = load_pretrained_model(
-            model_path=model_path,
+    def __init__(self, model_path: Path, lora_path: Optional[Path], merge_lora: bool) -> None:
+        tokenizer, model, image_processor, _ = load_pretrained_model(
+            model_path=str(model_path),
             model_base=None,
-            model_name=model_name,
+            model_name="llava-v1.5-7b",
             load_8bit=False,
-            load_4bit=False
+            load_4bit=False,
         )
-
-        self.model = self.model.to(dtype=torch.float16)
-
+        self.tokenizer = tokenizer
+        self.model = model.to(dtype=torch.float16)
+        self.image_processor = image_processor
         if lora_path:
             if PeftModel is None:
-                raise ImportError("peft is not installed but --lora-path was provided")
-            print(f"Loading LoRA adapter from {lora_path} (merge={merge_lora})")
-            self.model = PeftModel.from_pretrained(self.model, lora_path)
+                raise ImportError("Install `peft` to load LoRA checkpoints.")
+            adapter = PeftModel.from_pretrained(self.model, str(lora_path))
             if merge_lora:
-                self.model = self.model.merge_and_unload()
-            self.model = self.model.to(dtype=torch.float16)
+                adapter = adapter.merge_and_unload()
+            self.model = adapter.to(dtype=torch.float16)
 
-        print(f"Model loaded! Vocab size: {len(self.tokenizer)}")
+    def _prepare_prompt(self, query: str) -> str:
+        conv = conv_templates["vicuna_v1"].copy()
+        question = query if query.startswith(DEFAULT_IMAGE_TOKEN) else f"{DEFAULT_IMAGE_TOKEN}\n{query}"
+        conv.append_message(conv.roles[0], question)
+        conv.append_message(conv.roles[1], None)
+        return conv.get_prompt()
 
-    def infer(self, image_path, query):
+    def _decode(self, output_ids: torch.Tensor) -> str:
+        vocab_size = len(self.tokenizer)
+        cleaned = []
+        for seq in output_ids:
+            filtered = [tok for tok in seq.tolist() if 0 <= tok < vocab_size]
+            cleaned.append(torch.tensor(filtered, device=self.model.device))
+        return self.tokenizer.batch_decode(cleaned, skip_special_tokens=True)[0].strip()
+
+    def infer(self, image_path: Path, query: str) -> Tuple[Optional[str], Optional[str]]:
         try:
-            image = Image.open(image_path).convert('RGB')
-            image_tensor = process_images([image], self.image_processor, self.model.config)
-            image_tensor = image_tensor.to(self.model.device, dtype=torch.float16)
+            image = Image.open(image_path).convert("RGB")
+            tensor = process_images([image], self.image_processor, self.model.config)
+            tensor = tensor.to(self.model.device, dtype=torch.float16)
 
-            conv = conv_templates["vicuna_v1"].copy()
-            prompt_query = query if DEFAULT_IMAGE_TOKEN in query else DEFAULT_IMAGE_TOKEN + "\n" + query
-            inp = prompt_query
-            conv.append_message(conv.roles[0], inp)
-            conv.append_message(conv.roles[1], None)
-            prompt = conv.get_prompt()
-
+            prompt = self._prepare_prompt(query)
             input_ids = tokenizer_image_token(
                 prompt,
                 self.tokenizer,
                 IMAGE_TOKEN_INDEX,
-                return_tensors='pt'
+                return_tensors="pt",
             ).unsqueeze(0).to(self.model.device)
 
             with torch.inference_mode():
                 output_ids = self.model.generate(
                     input_ids,
-                    images=image_tensor,
+                    images=tensor,
                     do_sample=False,
                     max_new_tokens=50,
                     use_cache=True,
-                    pad_token_id=self.tokenizer.pad_token_id if self.tokenizer.pad_token_id is not None else self.tokenizer.eos_token_id,
-                    eos_token_id=self.tokenizer.eos_token_id
+                    pad_token_id=self.tokenizer.pad_token_id or self.tokenizer.eos_token_id,
+                    eos_token_id=self.tokenizer.eos_token_id,
                 )
+            return self._decode(output_ids), None
+        except Exception as exc:  # noqa: BLE001
+            return None, str(exc)
 
-            vocab_size = len(self.tokenizer)
-            filtered_ids = []
 
-            for ids in output_ids:
-                valid_ids = []
-                for token_id in ids.tolist():
-                    if 0 <= token_id < vocab_size:
-                        valid_ids.append(token_id)
-                filtered_ids.append(torch.tensor(valid_ids, device=self.model.device))
+def collect_images(data_dir: Path, extensions: Sequence[str]) -> List[Path]:
+    files: List[Path] = []
+    for ext in extensions:
+        files.extend(data_dir.glob(f"*{ext}"))
+        files.extend(data_dir.glob(f"*{ext.upper()}"))
+    return sorted(files)
 
-            outputs = self.tokenizer.batch_decode(filtered_ids, skip_special_tokens=True)[0].strip()
-            return outputs, None
 
-        except Exception as e:
-            import traceback
-            error_msg = f"{str(e)}\n{traceback.format_exc()}"
-            return None, error_msg
+def extract_binary_label(text: Optional[str]) -> str:
+    if not text:
+        return "NA"
+    lowered = text.lower()
+    if "assistant:" in lowered:
+        lowered = lowered.split("assistant:", 1)[1].strip()
+    first_word = lowered.split()[0] if lowered else ""
+    return first_word if first_word in {"first", "second"} else "NA"
 
-def process_dataset(model_path, data_dir, output_file, query, image_extensions=None, lora_path=None, merge_lora=False):
-    if image_extensions is None:
-        image_extensions = ['.jpg', '.jpeg', '.png', '.bmp', '.tiff', '.webp']
 
-    data_path = Path(data_dir)
-    image_files = []
-    for ext in image_extensions:
-        image_files.extend(data_path.glob(f'*{ext}'))
-        image_files.extend(data_path.glob(f'*{ext.upper()}'))
-
-    image_files = sorted(image_files)
-    print(f"Found {len(image_files)} images in {data_dir}")
-
-    if len(image_files) == 0:
-        print(f"ERROR: No images found in {data_dir}")
-        return
-
-    inferencer = TemporalOrderingInference(model_path, lora_path=lora_path, merge_lora=merge_lora)
-
-    results = []
-    base_query = query
-    if DEFAULT_IMAGE_TOKEN not in base_query:
-        base_query = DEFAULT_IMAGE_TOKEN + "\n" + base_query
-
-    for image_path in tqdm(image_files, desc="Processing images"):
-        response, error = inferencer.infer(str(image_path), base_query)
-
-        if error is None and response is not None:
-            response_lower = response.strip().lower()
-            if "assistant:" in response_lower:
-                response_lower = response_lower.split("assistant:", 1)[1].strip()
-            first_word = response_lower.split()[0] if response_lower else ""
-            ans = first_word if first_word in {"first", "second"} else "NA"
-        else:
-            ans = "NA"
-
-        result = {
-            'image_name': image_path.name,
-            'image_path': str(image_path),
-            'query': query,
-            'prediction': ans,
-            'raw_output': response,
-            'error': error,
-            'timestamp': datetime.now().isoformat()
+def write_results(path: Path, results: Sequence[SampleResult]) -> None:
+    payload = [
+        {
+            "image_name": res.image_path.name,
+            "image_path": str(res.image_path),
+            "prediction": res.prediction,
+            "raw_output": res.raw_output,
+            "error": res.error,
+            "timestamp": datetime.now().isoformat(),
         }
+        for res in results
+    ]
+    path.write_text(json.dumps(payload, indent=2))
 
-        results.append(result)
 
-        if len(results) % 10 == 0:
-            with open(output_file, 'w') as f:
-                json.dump(results, f, indent=2)
-            print(f"\nSaved checkpoint at {len(results)} images")
-
-    with open(output_file, 'w') as f:
-        json.dump(results, f, indent=2)
-
-    successful = sum(1 for r in results if r['error'] is None)
-    failed = len(results) - successful
-
-    first_count = sum(1 for r in results if r['prediction'] == 'first')
-    second_count = sum(1 for r in results if r['prediction'] == 'second')
-
-    print(f"\n{'='*80}")
-    print(f"Processing complete!")
-    print(f"Total images: {len(results)}")
-    print(f"Successful: {successful}")
-    print(f"Failed: {failed}")
-    print(f"Predictions - 'first': {first_count}, 'second': {second_count}")
-    print(f"Results saved to: {output_file}")
-    print(f"{'='*80}")
-
-def main():
-    parser = argparse.ArgumentParser(description='Temporal Ordering Inference')
-    parser.add_argument('--model-path', type=str,
-                       default='checkpoints/viscot-temporal-prefix',
-                       help='Path to the Visual-CoT model')
-    parser.add_argument('--data-dir', type=str,
-                       default='/workspace/data/temporal_concat',
-                       help='Directory containing image pairs')
-    parser.add_argument('--output', type=str,
-                       default='temporal_ordering_results.json',
-                       help='Output JSON file for results')
-    parser.add_argument('--query', type=str,
-    default='<image>\nTASK: Determine temporal order of LEFT and RIGHT images. FORMAT: Reply with exactly one word: "first" or "second". Do not add reasoning.',
-    help='Question to ask about temporal ordering')
-    parser.add_argument('--lora-path', type=str, default=None,
-                       help='Optional path to a LoRA adapter fine-tuned on top of --model-path')
-    parser.add_argument('--merge-lora', action='store_true',
-                       help='Merge LoRA weights into the base model for inference')
-
-    args = parser.parse_args()
-
-    if not os.path.exists(args.data_dir):
-        print(f"ERROR: Data directory does not exist: {args.data_dir}")
+def maybe_checkpoint(output_path: Path, results: List[SampleResult], interval: int) -> None:
+    if interval <= 0 or len(results) % interval:
         return
+    write_results(output_path, results)
+    print(f"[checkpoint] saved {len(results)} samples to {output_path}")
 
-    process_dataset(args.model_path, args.data_dir, args.output, args.query,
-                    lora_path=args.lora_path, merge_lora=args.merge_lora)
+
+def process_dataset(
+    model_path: Path,
+    data_dir: Path,
+    output_path: Path,
+    query: str,
+    lora_path: Optional[Path],
+    merge_lora: bool,
+    image_extensions: Sequence[str],
+) -> None:
+    images = collect_images(data_dir, image_extensions)
+    if not images:
+        raise FileNotFoundError(f"No images found under {data_dir}")
+
+    runner = TemporalOrderingInference(model_path, lora_path, merge_lora)
+    normalized_query = query if query.startswith(DEFAULT_IMAGE_TOKEN) else f"{DEFAULT_IMAGE_TOKEN}\n{query}"
+
+    results: List[SampleResult] = []
+    for image_path in tqdm(images, desc="Temporal ordering"):
+        response, error = runner.infer(image_path, normalized_query)
+        results.append(SampleResult(image_path=image_path, prediction=extract_binary_label(response), raw_output=response, error=error))
+        maybe_checkpoint(output_path, results, interval=10)
+
+    write_results(output_path, results)
+    successes = sum(1 for res in results if res.error is None)
+    print(f"Processed {len(results)} samples | success={successes} | output={output_path}")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Batch inference for the temporal ordering benchmark.")
+    parser.add_argument("--model-path", type=Path, default=Path("checkpoints/viscot-temporal-prefix"))
+    parser.add_argument("--data-dir", type=Path, default=Path("/workspace/data/temporal_concat"))
+    parser.add_argument("--output", type=Path, default=Path("temporal_ordering_results.json"))
+    parser.add_argument(
+        "--query",
+        type=str,
+        default='<image>\nTASK: Determine temporal order of LEFT and RIGHT images. FORMAT: Reply with exactly one word: "first" or "second". Do not add reasoning.',
+    )
+    parser.add_argument("--lora-path", type=Path, default=None)
+    parser.add_argument("--merge-lora", action="store_true")
+    parser.add_argument("--ext", type=str, nargs="*", default=[".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".webp"])
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    process_dataset(
+        model_path=args.model_path,
+        data_dir=args.data_dir,
+        output_path=args.output,
+        query=args.query,
+        lora_path=args.lora_path,
+        merge_lora=args.merge_lora,
+        image_extensions=args.ext,
+    )
+
 
 if __name__ == "__main__":
     main()
